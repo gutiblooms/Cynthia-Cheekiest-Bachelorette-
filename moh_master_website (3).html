@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cheekiest Bachelorette · MOH Master Doc</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;font-size:13px;color:#1a1a1a;background:#fafafa;line-height:1.5;}
+.wrap{max-width:760px;margin:0 auto;padding:1.25rem 1rem;}
+
+/* HERO */
+.hero{background:#FBEAF0;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1rem;border:0.5px solid #F4C0D1;}
+.hero-tag{display:inline-block;background:#D4537E;color:#fff;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:12px;margin-bottom:.5rem;font-weight:500;}
+.hero h1{font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#4B1528;margin-bottom:.2rem;line-height:1.2;}
+.hero p{font-size:.8rem;color:#72243E;}
+
+/* TABS */
+.tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+.tab{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:0.5px solid #ddd;background:#fff;color:#666;transition:all .15s;}
+.tab.active{background:#D4537E;color:#fff;border-color:#D4537E;}
+.tab:hover{border-color:#D4537E;}
+
+/* PANELS */
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* CARDS */
+.card{background:#fff;border-radius:12px;padding:1rem 1.25rem;margin-bottom:.85rem;border:0.5px solid #e5e5e5;}
+.card-title{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;color:#666;margin-bottom:.75rem;}
+
+/* LOGISTICS ROWS */
+.lrow{display:flex;gap:8px;margin-bottom:.5rem;align-items:flex-start;}
+.lrow:last-child{margin-bottom:0;}
+.licon{font-size:14px;flex-shrink:0;width:22px;}
+.ltext{font-size:12px;color:#1a1a1a;line-height:1.6;}
+.ltext strong{font-weight:500;}
+
+/* DAY BLOCKS */
+.day-block{border:0.5px solid #e5e5e5;border-radius:12px;margin-bottom:.85rem;overflow:hidden;background:#fff;}
+.day-head{padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .15s;}
+.day-head:hover{background:#fafafa;}
+.day-left{display:flex;gap:10px;align-items:center;}
+.day-emoji{font-size:18px;}
+.day-name{font-size:14px;font-weight:500;color:#1a1a1a;}
+.day-date{font-size:11px;color:#666;margin-top:1px;}
+.chev{font-size:11px;color:#999;transition:transform .2s;}
+.chev.open{transform:rotate(180deg);}
+.day-body{display:none;border-top:0.5px solid #e5e5e5;}
+.day-body.show{display:block;}
+
+/* SECTIONS */
+.sec{padding:.85rem 1rem;border-bottom:0.5px solid #e5e5e5;}
+.sec:last-child{border-bottom:none;}
+.sec-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;color:#666;margin-bottom:.6rem;}
+
+/* OUTFIT BOX */
+.outfit{background:#FBEAF0;border-radius:8px;padding:.6rem .85rem;font-size:12px;color:#4B1528;line-height:1.6;}
+
+/* TIMELINE EVENTS */
+.event{display:flex;gap:10px;margin-bottom:.7rem;align-items:flex-start;}
+.event:last-child{margin-bottom:0;}
+.etime{font-size:11px;color:#666;min-width:48px;font-weight:500;padding-top:2px;flex-shrink:0;}
+.edot{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.eright{flex:1;}
+.etitle{font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:2px;}
+.edesc{font-size:12px;color:#666;line-height:1.6;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;}
+.etag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500;}
+.t-transport{background:#E6F1FB;color:#0C447C;}
+.t-price{background:#E1F5EE;color:#085041;}
+.t-book{background:#FBEAF0;color:#72243E;}
+.t-warn{background:#FAEEDA;color:#854F0B;}
+.dir{background:#fafafa;border-radius:8px;padding:.5rem .75rem;margin-top:6px;font-size:11px;color:#666;line-height:1.6;border-left:2px solid #D4537E;}
+.dir strong{color:#1a1a1a;}
+
+/* GAMES */
+.game{background:#fafafa;border-radius:8px;padding:.55rem .85rem;margin-bottom:.35rem;}
+.game:last-child{margin-bottom:0;}
+.game-title{font-size:12px;font-weight:500;color:#1a1a1a;margin-bottom:2px;}
+.game-desc{font-size:11px;color:#666;line-height:1.5;}
+
+/* BOOKING ITEMS */
+.book-item{display:flex;gap:8px;margin-bottom:.5rem;align-items:flex-start;}
+.book-item:last-child{margin-bottom:0;}
+.book-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0;}
+.book-text{font-size:12px;color:#1a1a1a;line-height:1.6;}
+.book-text span{color:#666;font-size:11px;}
+
+@media print {
+  .tabs{display:none;}
+  .panel{display:block !important;}
+  .day-body{display:block !important;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>The Cheekiest Bachelorette · Tulum 2026</h1>
+  <p>Planning guide · May 21–25 · 5 girls · Calle Aldea Zamá 26</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('logistics')">🗝 Logistics</div>
+  <div class="tab" onclick="showTab('thu')">🌸 Thursday</div>
+  <div class="tab" onclick="showTab('fri')">✨ Friday</div>
+  <div class="tab" onclick="showTab('sat')">🌿 Saturday</div>
+  <div class="tab" onclick="showTab('sun')">☀️ Sunday</div>
+  <div class="tab" onclick="showTab('mon')">🎉 Monday</div>
+  <div class="tab" onclick="showTab('bookings')">✅ Bookings</div>
+</div>
+
+<!-- LOGISTICS PANEL -->
+<div class="panel active" id="panel-logistics">
+  <div class="card">
+    <div class="card-title">🏠 Villa & Transport</div>
+    <div class="lrow"><div class="licon">🏠</div><div class="ltext"><strong>Villa:</strong> Calle Aldea Zamá 26, 77764 Tulum, Q. Roo, Mexico</div></div>
+    <div class="lrow"><div class="licon">✈️</div><div class="ltext"><strong>Flights:</strong> Land Cancun (CUN) 12pm Thu May 21 · Depart 3pm Mon May 25 · Leave villa by 12:30pm</div></div>
+    <div class="lrow"><div class="licon">🚗</div><div class="ltext"><strong>Airport transfer:</strong> $86 pp round trip · 5 girls = $430 total · Confirm pickup night before both ways</div></div>
+    <div class="lrow"><div class="licon">🚕</div><div class="ltext"><strong>Taxis:</strong> Cash pesos only — always negotiate before getting in. Aldea Zamá → hotel zone: ~300–400 pesos ($15–20). After 11pm add ~50% surcharge. No meters in Tulum.</div></div>
+    <div class="lrow"><div class="licon">📱</div><div class="ltext"><strong>Uber:</strong> Works in Tulum but unreliable late night. Always have taxi as backup. Download before you go.</div></div>
+    <div class="lrow"><div class="licon">🚲</div><div class="ltext"><strong>Bikes:</strong> Aldea Zama Bike Rentals — deliver to your villa via WhatsApp. ~$7–8 pp/day. Book night before Saturday. Gran Cenote is 15 min flat ride west on Cobá road.</div></div>
+    <div class="lrow"><div class="licon">💵</div><div class="ltext"><strong>Cash:</strong> Bring USD to exchange + pesos for taxis/cenotes. Budget ~2,000–3,000 pesos cash pp. ATMs in Tulum centro.</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚠️ Important Notes</div>
+    <div class="lrow"><div class="licon">🌿</div><div class="ltext"><strong>Sargassum:</strong> May is seaweed season on Tulum beaches. Taboo has a pool so Sunday is fine. Beach days may vary — check day-of conditions.</div></div>
+    <div class="lrow"><div class="licon">💧</div><div class="ltext"><strong>Cenote rules:</strong> Apply reef-safe sunscreen 20 min BEFORE entering water — required at both cenotes. No regular sunscreen allowed.</div></div>
+    <div class="lrow"><div class="licon">🎉</div><div class="ltext"><strong>Pro tip:</strong> Tell EVERY venue it's a bachelorette when you arrive/book — you'll get extra attention, sometimes free shots or decorations.</div></div>
+    <div class="lrow"><div class="licon">🌙</div><div class="ltext"><strong>Night safety:</strong> Don't bike on paths at night. Stick to roads. Always negotiate taxi price before getting in after dark.</div></div>
+    <div class="lrow"><div class="licon">🛒</div><div class="ltext"><strong>Grocery store:</strong> Chedraui or Super San Francisco in Tulum centro — ~10 min taxi from villa. Buy Thursday on arrival.</div></div>
+  </div>
+</div>
+
+<!-- THURSDAY PANEL -->
+<div class="panel" id="panel-thu">
+  <div class="card">
+    <div class="card-title">🌸 Sweet Arrival · Thursday May 21</div>
+    <div class="outfit">PJs & cozy · First night vibes · No outfit theme — just be comfortable</div>
+  </div>
+  <div class="day-block" id="thu">
+    <div class="day-head" onclick="tog('thu')">
+      <span style="font-size:13px;font-weight:500;">Full Schedule</span>
+      <div class="chev open" id="thu-c">▼</div>
+    </div>
+    <div class="day-body show" id="thu-b">
+      <div class="sec">
+        <div class="event">
+          <div class="etime">12:00pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Land at Cancun Airport (CUN)</div>
+            <div class="edesc">Meet at baggage claim. Do a headcount before leaving terminal.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">12:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Private transfer → villa</div>
+            <div class="edesc">~1.5–2 hrs depending on traffic. Use the ride to hype everyone up!</div>
+            <div class="dir"><strong>Route:</strong> CUN → Federal Hwy 307 south → Tulum exit → Calle Aldea Zamá 26.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">2:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Arrive villa · unpack · DECORATE</div>
+            <div class="edesc">Pop welcome drinks. Set up decorations before Cynthia sees — make it a moment.</div>
+            <div class="tags"><span class="etag t-warn">Bring decorations in luggage or pre-order to villa</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">3:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Grocery run</div>
+            <div class="edesc">Split: 2–3 girls go, rest stay and set up. Chedraui or Super San Francisco in centro.</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~150 pesos each way</span></div>
+            <div class="dir"><strong>Buy:</strong> Breakfast foods (eggs, fruit, bread, coffee), snacks, drinks, wine/mezcal for villa nights, PJ games snacks, water, reef-safe sunscreen.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">6:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Taxi to Ziggy's Beach Club</div>
+            <div class="edesc">Drinks, dinner, and live music 7:30–9:30pm. Beachfront, swing bar, relaxed first night.</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~300–400 pesos</span><span class="etag t-book">Reserve: ziggytulum.com</span></div>
+            <div class="dir"><strong>Direction:</strong> From villa → taxi east toward hotel zone → Ziggy's on beach road. Tell driver "Ziggy's beach club." ~20 min.</div>
+            <div class="dir" style="margin-top:4px;"><strong>Getting home:</strong> Taxi back to villa. ~300–400 pesos. Negotiate before getting in.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">9:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Back to villa · PJ games night</div>
+            <div class="edesc">PJs on, snacks out, no boys, no rules.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🎮 Games for Tonight</div>
+    <div class="game"><div class="game-title">How Well Do You Know the Bride?</div><div class="game-desc">Prep 15–20 Qs about Cynthia & Cheeks — first date, most embarrassing moment, dream honeymoon. Most right = official #1 fan.</div></div>
+    <div class="game"><div class="game-title">Guess What Cheeks Said</div><div class="game-desc">Send Cheeks questions beforehand (via text or video) — like "What's Cynthia's most annoying habit?" or "What was your first impression of her?" Record his answers. Play them for the group and everyone guesses what he said before revealing the real answer. Cynthia goes last!</div></div>
+  </div>
+</div>
+
+<!-- FRIDAY PANEL -->
+<div class="panel" id="panel-fri">
+  <div class="card">
+    <div class="card-title">✨ Glitz & Glam · Friday May 22</div>
+    <div class="outfit">Outfit theme: <strong>Glitz & Glam — colorful, sequins, glitter!</strong> Daytime: cute swimsuits for the boat. Night: full sequins, bright colors, sparkle, heels. Go all out!</div>
+  </div>
+  <div class="day-block" id="fri">
+    <div class="day-head" onclick="tog('fri')">
+      <span style="font-size:13px;font-weight:500;">Full Schedule</span>
+      <div class="chev open" id="fri-c">▼</div>
+    </div>
+    <div class="day-body show" id="fri-b">
+      <div class="sec">
+        <div class="event">
+          <div class="etime">9:00am</div><div class="edot" style="background:#378ADD;"></div>
+          <div class="eright">
+            <div class="etitle">Quick breakfast at villa</div>
+            <div class="edesc">Light breakfast — boat day ahead! Eggs, fruit, coffee.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">10:00am</div><div class="edot" style="background:#378ADD;"></div>
+          <div class="eright">
+            <div class="etitle">Private boat + snorkeling · 4 hours (10am–2pm)</div>
+            <div class="edesc">$280 pp ($1,400 total for group), unlimited food and drinks included. Snorkel the Mesoamerican Reef — coral, tropical fish, sea turtles. Bring waterproof camera, motion sickness meds if needed, extra sunscreen. Confirm exact pickup point when booking.</div>
+            <div class="tags"><span class="etag t-price">$280 pp</span><span class="etag t-book">Book: tulumcharters.com or snorkeltulum.com</span></div>
+            <div class="dir"><strong>Pickup:</strong> Most tours depart from a dock in hotel zone or Punta Allen area. Confirm exact meeting point when booking. Taxi to dock: ~300–400 pesos.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">2:00pm</div><div class="edot" style="background:#378ADD;"></div>
+          <div class="eright">
+            <div class="etitle">Back to villa · pool + chill</div>
+            <div class="edesc">Rinse off salt water, float in pool, decompress. Low key afternoon.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">5:00pm</div><div class="edot" style="background:#378ADD;"></div>
+          <div class="eright">
+            <div class="etitle">FULL GLAM · Glitz & Glam looks</div>
+            <div class="edesc">This is THE night — colorful sequins, glitter, bright colors, sparkle, heels. Go all out for Rosa Negra!</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">7:30pm</div><div class="edot" style="background:#378ADD;"></div>
+          <div class="eright">
+            <div class="etitle">Dinner + dancing · Rosa Negra</div>
+            <div class="edesc">Latin energy, tribal fire shows, DJ, dancing — dinner becomes a full party. Tell them it's a bachelorette. Ladies free cover Fri–Sun. Stay here all night — no need to go anywhere else!</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~300–400 pesos</span><span class="etag t-book">Reserve: OpenTable or rosanegra.com.mx</span></div>
+            <div class="dir"><strong>Direction:</strong> From villa → taxi east to hotel zone → Rosa Negra at Km 8.5 Carretera Tulum-Boca Paila. Tell driver "Rosa Negra hotel zone." ~20 min.</div>
+            <div class="dir" style="margin-top:4px;"><strong>Getting home:</strong> Taxi from hotel zone. ~300–400 pesos. After midnight add ~50%. Negotiate before getting in.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SATURDAY PANEL -->
+<div class="panel" id="panel-sat">
+  <div class="card">
+    <div class="card-title">🌿 Into the Jungle · Saturday May 23</div>
+    <div class="outfit">Outfit theme: <strong>Into the Jungle</strong> · Earthy tones, greens, golds, linen sets, strappy sandals. Boho chic for daytime cenotes, glam it up for El Tabano + Gitano at night.</div>
+  </div>
+  <div class="day-block" id="sat">
+    <div class="day-head" onclick="tog('sat')">
+      <span style="font-size:13px;font-weight:500;">Full Schedule</span>
+      <div class="chev open" id="sat-c">▼</div>
+    </div>
+    <div class="day-body show" id="sat-b">
+      <div class="sec">
+        <div class="event">
+          <div class="etime">10:00am</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Mariachi arrives for breakfast serenade 🎺</div>
+            <div class="edesc">Live mariachi band at the villa — traditional songs, charro outfits, the full experience. 45 min set while you eat brunch together. Perfect way to kick off cenote day!</div>
+            <div class="tags"><span class="etag t-book">Book mariachi via mariachitulum.com or yourtulumconcierge.com</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">10:45am</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Brunch at villa with mariachi</div>
+            <div class="edesc">Cook together — eggs, fruit, coffee. Big cenote day ahead!</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">12:00pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Bike to Gran Cenote</div>
+            <div class="edesc">5 bikes delivered to villa (book night before via WhatsApp). West on Cobá road — flat, 15 min. Arrive before noon to beat tour buses. Bring fruit, drinks, reef-safe sunscreen. Apply 20 min BEFORE entering — enforced.</div>
+            <div class="tags"><span class="etag t-book">Book bikes: Aldea Zama Bike Rentals WhatsApp</span></div>
+            <div class="dir"><strong>Direction:</strong> From villa → west on Cobá road (Hwy 109) → 4km straight → Gran Cenote on left, large sign. 15 min.</div>
+            <div class="dir" style="margin-top:4px;"><strong>What to see:</strong> Open sky pool + cave system to snorkel + freshwater turtles + stalactites. Swim in both sections!</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">1:15pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Bike to Cenote Calavera (5 min away)</div>
+            <div class="edesc">Continue west on Cobá road — Cenote Calavera is 5 min past Gran Cenote. Smaller, less crowded, has a jumping platform (SO fun for photos). Jump in from the top!</div>
+            <div class="dir"><strong>Direction:</strong> From Gran Cenote → continue west on Cobá road → 5 min → Cenote Calavera on left.</div>
+            <div class="dir" style="margin-top:4px;"><strong>What to see:</strong> 3 entry holes (one you climb down, one you jump from), crystal clear water, jumping platform ~15 feet high. Everyone takes turns jumping!</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">2:30pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Bike back to villa · freshen up</div>
+            <div class="edesc">Same road back east. 15 min. Shower and change for lunch.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">3:00pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Lunch · El Cayuco</div>
+            <div class="edesc">Fresh seafood — ceviche, fish tacos, shrimp. Local, casual, very affordable. Cash preferred.</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~150 pesos</span><span class="etag t-book">No reservation needed</span></div>
+            <div class="dir"><strong>Address:</strong> Tulum centro — search "El Cayuco Tulum" on Google Maps. ~10 min taxi.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">4:30pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Back to villa · pool + relax + GLAM</div>
+            <div class="edesc">Pool time, nap, then Into the Jungle glam for dinner and Gitano.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">7:30pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Dinner · El Tabano</div>
+            <div class="edesc">Contemporary Mexican, jungle backyard, great moles and cocktails. Cute, atmospheric, affordable.</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~150–200 pesos</span><span class="etag t-book">Reserve: OpenTable or walk in</span></div>
+            <div class="dir"><strong>Direction:</strong> From villa → taxi to hotel zone → El Tabano on jungle side of Carretera Tulum-Boca Paila. ~15–20 min.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">9:30pm</div><div class="edot" style="background:#1D9E75;"></div>
+          <div class="eright">
+            <div class="etitle">Gitano · jungle bar</div>
+            <div class="edesc">Most beautiful spot in Tulum — fairy lights through jungle canopy, fire torches, mezcal, live DJ. Arrive by 10pm. Gets packed after 11pm Saturdays.</div>
+            <div class="tags"><span class="etag t-transport">Short taxi · ~100 pesos</span></div>
+            <div class="dir"><strong>Direction:</strong> From El Tabano → short taxi south on hotel zone road → Gitano at Km 1.5. Walkable if not too late.</div>
+            <div class="dir" style="margin-top:4px;"><strong>Getting home:</strong> Taxis on hotel zone road. ~300–400 pesos back to villa. After midnight add ~50%.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUNDAY PANEL -->
+<div class="panel" id="panel-sun">
+  <div class="card">
+    <div class="card-title">☀️ Sun Drunk · Sunday May 24</div>
+    <div class="outfit">No outfit theme · Cute swimsuit for Taboo · Casual for Mamazul dinner · Pool night after</div>
+  </div>
+  <div class="day-block" id="sun">
+    <div class="day-head" onclick="tog('sun')">
+      <span style="font-size:13px;font-weight:500;">Full Schedule</span>
+      <div class="chev open" id="sun-c">▼</div>
+    </div>
+    <div class="day-body show" id="sun-b">
+      <div class="sec">
+        <div class="event">
+          <div class="etime">10:00am</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Slow morning · coffee + pool</div>
+            <div class="edesc">Recovery mode. Açaí bowls, coffee, float. Leave for Taboo by 11am.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">11:00am</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Taboo Beach Club · all day</div>
+            <div class="edesc">2,000 sqm of white sand + pool + DJ sets + sax and violin shows + Mediterranean food. Great bachelorette spot. $150 pp min spend goes toward food and drinks. Arrive early for best spots — call ahead that morning.</div>
+            <div class="tags"><span class="etag t-price">$150 pp min spend</span><span class="etag t-transport">Taxi · ~300–400 pesos</span><span class="etag t-book">taboobeachclub.com.mx · call ahead</span></div>
+            <div class="dir"><strong>Direction:</strong> From villa → taxi east to hotel zone → Taboo at Km 7, Carretera Tulum-Boca Paila. Tell driver "Taboo beach club." ~20 min.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">6:00pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Taxi back to villa · freshen up</div>
+            <div class="edesc">Quick shower, change. Dinner is a 6 min walk.</div>
+            <div class="tags"><span class="etag t-transport">Taxi · ~300–400 pesos</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">7:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Dinner · Mamazul</div>
+            <div class="edesc">6 min walk from villa — authentic Mexican food + 350+ mezcals. Do a mezcal tasting as a group for last night together. Very fun, intimate, walkable. No taxi needed!</div>
+            <div class="tags"><span class="etag t-book">Reserve ahead or walk in</span></div>
+            <div class="dir"><strong>Direction:</strong> Walk from villa — search "Mamazul Tulum" on Google Maps. 6 min, no taxi.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">9:30pm</div><div class="edot" style="background:#EF9F27;"></div>
+          <div class="eright">
+            <div class="etitle">Villa pool night · last night together</div>
+            <div class="edesc">Walk home, swimsuits, pool, music, wine, reminisce. Pack bags tonight — don't leave for Monday!</div>
+            <div class="tags"><span class="etag t-warn">Pack bags tonight — flight tomorrow!</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MONDAY PANEL -->
+<div class="panel" id="panel-mon">
+  <div class="card">
+    <div class="card-title">🎉 Dip Dip Hooray · Monday May 25</div>
+    <div class="outfit">No theme · Swimsuits for pool · Travel outfits ready · Flight at 3pm · Leave villa 12:30pm SHARP</div>
+  </div>
+  <div class="day-block" id="mon">
+    <div class="day-head" onclick="tog('mon')">
+      <span style="font-size:13px;font-weight:500;">Full Schedule</span>
+      <div class="chev open" id="mon-c">▼</div>
+    </div>
+    <div class="day-body show" id="mon-b">
+      <div class="sec">
+        <div class="event">
+          <div class="etime">9:00am</div><div class="edot" style="background:#D4537E;"></div>
+          <div class="eright">
+            <div class="etitle">Final villa brunch</div>
+            <div class="edesc">Last meal together. Cook everything left. Mandatory final group photo.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">10:30am</div><div class="edot" style="background:#D4537E;"></div>
+          <div class="eright">
+            <div class="etitle">Last pool dip</div>
+            <div class="edesc">One final swim. Soak it in. Take a million photos.</div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">11:30am</div><div class="edot" style="background:#D4537E;"></div>
+          <div class="eright">
+            <div class="etitle">Pack up · final check</div>
+            <div class="edesc">Bags should be packed from Sunday night. Full villa sweep — rooms, bathrooms, pool, chargers.</div>
+            <div class="tags"><span class="etag t-warn">Confirm villa check-out time</span></div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="etime">12:30pm</div><div class="edot" style="background:#D4537E;"></div>
+          <div class="eright">
+            <div class="etitle">Transfer to Cancun Airport · DO NOT BE LATE</div>
+            <div class="edesc">~1.5–2 hrs to CUN. 3pm flight — must leave by 12:30pm. Confirm return pickup night before!</div>
+            <div class="tags"><span class="etag t-warn">Confirm night before!</span></div>
+            <div class="dir"><strong>Cynthia goes home a future Mrs. Cheeks. 🌸</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKINGS PANEL -->
+<div class="panel" id="panel-bookings">
+  <div class="card">
+    <div class="card-title">🔴 Book RIGHT NOW</div>
+    <div class="book-item"><div class="book-dot" style="background:#E53E3E;"></div><div class="book-text"><strong>Boat · Friday 10am–2pm</strong> <span>· tulumcharters.com or snorkeltulum.com · $1,400 total ($280 pp), confirm pickup point</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#E53E3E;"></div><div class="book-text"><strong>Ziggy's · Thursday dinner</strong> <span>· ziggytulum.com · mention bachelorette</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">✅ BOOKED</div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Rosa Negra · Friday dinner ✅</strong> <span>· CONFIRMED</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Mariachi · Saturday 10am ✅</strong> <span>· CONFIRMED · 45 min set at villa</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Taboo Beach Club · Sunday ✅</strong> <span>· CONFIRMED · $150 pp min spend</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🟡 Book This Week</div>
+    <div class="book-item"><div class="book-dot" style="background:#D69E2E;"></div><div class="book-text"><strong>El Tabano · Saturday dinner</strong> <span>· OpenTable · mention bachelorette</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D69E2E;"></div><div class="book-text"><strong>Taboo Beach Club · Sunday</strong> <span>· taboobeachclub.com.mx · ask for bachelorette coordinator · $150 pp min spend</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D69E2E;"></div><div class="book-text"><strong>Aldea Zama Bike Rentals</strong> <span>· WhatsApp delivery to villa · Book for Saturday morning, 5 bikes</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D69E2E;"></div><div class="book-text"><strong>Mamazul · Sunday dinner</strong> <span>· Walk-in or call ahead · 6 min from villa</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">🟢 Day Of / No Reservation</div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Gran Cenote + Calavera · Saturday</strong> <span>· Just show up, pay at entrance · Arrive before noon</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>El Cayuco · Saturday lunch</strong> <span>· Walk in, cash preferred</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Gitano · Saturday night</strong> <span>· Walk in · Arrive by 10pm</span></div></div>
+    <div class="book-item"><div class="book-dot" style="background:#38A169;"></div><div class="book-text"><strong>Airport transfer return</strong> <span>· Confirm night before Monday!</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">💡 Pro Tips</div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Tell every venue it's a bachelorette — free shots, extra attention, sometimes decorations</div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Send Cheeks the questions for "Guess What Cheeks Said" game BEFORE the trip — record his answers via video or voice memo</div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Make everyone pack bags Sunday night — Monday morning is chaos</div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Bring portable speaker for villa nights + pool time</div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Reef-safe sunscreen only — bring from home, hard to find in Tulum</div></div>
+    <div class="book-item"><div class="book-dot" style="background:#D4537E;"></div><div class="book-text">Cenote jumping at Calavera is COLD — bring towels and warm up fast after!</div></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+function tog(id){
+  const b=document.getElementById(id+'-b');
+  const c=document.getElementById(id+'-c');
+  const show=b.classList.contains('show');
+  b.classList.toggle('show',!show);
+  c.classList.toggle('open',!show);
+}
+</script>
+</body>
+</html>
